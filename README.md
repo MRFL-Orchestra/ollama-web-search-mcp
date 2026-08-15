@@ -136,7 +136,7 @@ Fetches the content of a single web page by URL.
 You can also use the client functions directly in your own code:
 
 ```typescript
-import { webSearch, webFetch } from "ollama-web-search-mcp";
+import { webSearch, webFetch } from "@mrfl/ollama-web-search-mcp";
 
 // Web search
 const results = await webSearch("what is ollama?", 5);
@@ -160,5 +160,7 @@ npm run typecheck    # Type-check without emitting
 ```
 
 ## License
+
+MITe
 
 MIT
