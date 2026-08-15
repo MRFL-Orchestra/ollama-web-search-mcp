@@ -1,0 +1,52 @@
+{
+  "name": "ollama-web-search-mcp",
+  "version": "1.0.0",
+  "description": "A Node.js MCP server exposing Ollama's web search and web fetch APIs as MCP tools",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "ollama-web-search-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ollama",
+    "mcp",
+    "web-search",
+    "web-fetch",
+    "model-context-protocol",
+    "ai",
+    "search",
+    "llm"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MRFL-Orchestra/ollama-web-search-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MRFL-Orchestra/ollama-web-search-mcp/issues"
+  },
+  "homepage": "https://github.com/MRFL-Orchestra/ollama-web-search-mcp#readme"
+}
