@@ -1,5 +1,5 @@
 {
-  "name": "ollama-web-search-mcp",
+  "name": "@mrfl/ollama-web-search-mcp",
   "version": "1.0.0",
   "description": "A Node.js MCP server exposing Ollama's web search and web fetch APIs as MCP tools",
   "type": "module",
