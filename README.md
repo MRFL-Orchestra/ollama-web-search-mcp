@@ -161,6 +161,4 @@ npm run typecheck    # Type-check without emitting
 
 ## License
 
-MITe
-
 MIT
