@@ -1,20 +1,29 @@
-# ollama-web-search-mcp
+# ollama-web-search-mcp (Node.js / TypeScript)
 
-A Node.js MCP (Model Context Protocol) server that exposes [Ollama's web search and web fetch APIs](https://docs.ollama.com/capabilities/web-search) as MCP tools.
+[![npm version](https://img.shields.io/npm/v/@mrfl/ollama-web-search-mcp.svg)](https://www.npmjs.com/package/@mrfl/ollama-web-search-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is the JavaScript/TypeScript equivalent of Ollama's [official Python MCP server](https://github.com/ollama/ollama-python/blob/main/examples/web-search-mcp.py) — designed for any MCP client that prefers or requires a Node.js process.
+**A Node.js / TypeScript MCP (Model Context Protocol) server** that exposes [Ollama's web search and web fetch APIs](https://docs.ollama.com/capabilities/web-search) as MCP tools.
+
+This is the **JavaScript / Node.js equivalent** of Ollama's [official Python MCP server](https://github.com/ollama/ollama-python/blob/main/examples/web-search-mcp.py). While Ollama provides a Python MCP server for web search, there was no Node.js version available — this project fills that gap. It's written in TypeScript, runs on Node.js 18+, and is published to npm for easy `npx` usage.
+
+## Why Node.js?
+
+Ollama's official MCP server for web search is written in Python and requires `uv` or a Python runtime. Many MCP clients and agent frameworks (Claude Desktop, Cursor, Cline, Codex, etc.) can spawn any process, but if your stack is already Node.js-based, you probably don't want to install Python just for one MCP server. This package runs purely on Node.js — no Python needed.
 
 ## Features
 
 - **`web_search`** — Performs a web search via Ollama's hosted API and returns results (title, URL, content snippet)
 - **`web_fetch`** — Fetches a single web page by URL and returns its title, content, and links
-- Stdio transport (standard for MCP servers)
+- Written in **TypeScript**, compiled to ESM JavaScript
+- **Stdio transport** (standard for MCP servers)
 - Zero runtime dependencies beyond the MCP SDK
-- Publishes as an npm package with a CLI binary
+- Published to **npm** as `@mrfl/ollama-web-search-mcp` with a CLI binary
+- Usable as a **library** — import `webSearch()` and `webFetch()` directly in your Node.js code
 
 ## Prerequisites
 
-- Node.js 18 or higher
+- **Node.js 18 or higher**
 - An [Ollama API key](https://ollama.com/settings/keys) (free Ollama account required)
 
 ## Installation
@@ -22,7 +31,13 @@ This is the JavaScript/TypeScript equivalent of Ollama's [official Python MCP se
 ### From npm
 
 ```bash
-npm install -g ollama-web-search-mcp
+npm install -g @mrfl/ollama-web-search-mcp
+```
+
+Or use directly with npx (no install needed):
+
+```bash
+npx @mrfl/ollama-web-search-mcp
 ```
 
 ### From source
@@ -53,7 +68,7 @@ Add the server to your MCP client configuration:
   "mcpServers": {
     "ollama-web-search": {
       "command": "npx",
-      "args": ["ollama-web-search-mcp"],
+      "args": ["@mrfl/ollama-web-search-mcp"],
       "env": {
         "OLLAMA_API_KEY": "your_api_key_here"
       }
@@ -70,7 +85,7 @@ Add the server to your MCP client configuration:
     "ollama-web-search": {
       "type": "stdio",
       "command": "npx",
-      "args": ["ollama-web-search-mcp"],
+      "args": ["@mrfl/ollama-web-search-mcp"],
       "env": {
         "OLLAMA_API_KEY": "your_api_key_here"
       }
@@ -84,7 +99,7 @@ Add the server to your MCP client configuration:
 ```toml
 [mcp_servers.ollama-web-search]
 command = "npx"
-args = ["ollama-web-search-mcp"]
+args = ["@mrfl/ollama-web-search-mcp"]
 env = { "OLLAMA_API_KEY" = "your_api_key_here" }
 ```
 
@@ -133,7 +148,7 @@ Fetches the content of a single web page by URL.
 
 ## API Reference
 
-You can also use the client functions directly in your own code:
+You can also use the client functions directly in your own Node.js / TypeScript code:
 
 ```typescript
 import { webSearch, webFetch } from "@mrfl/ollama-web-search-mcp";
